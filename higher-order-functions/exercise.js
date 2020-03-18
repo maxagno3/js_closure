@@ -89,21 +89,29 @@ function union(arrays) {
 
 //Extension 5
 function objOfMatches(array1, array2, callback) {
-    for (let i = 0; i < array1.length; i++) {
-        if (array1[i] == array2[i]) {
-            let newObj = new Object;
-            console.log(newObj)
-            newObj.array1[i] = array2[i];
+    let emptyObj = {};
+    array1.reduce((acc,cv,i) => {
+        if(callback(cv) == array2[i]){
+            emptyObj[cv] = array2[i];
         }
-    }
-    return newObj;
+        return acc;
+    },{})
+    return emptyObj;
 }
 
 // console.log(objOfMatches(['hi', 'howdy', 'bye', 'later', 'hello'], ['HI', 'Howdy', 'BYE', 'LATER', 'hello'], function(str) { return str.toUpperCase(); }));
 // should log: { hi: 'HI', bye: 'BYE', later: 'LATER' }
 
 //Extension 6
-function multiMap(arrVals, arrCallbacks) {}
+function multiMap(arrVals, arrCallbacks) {
+    return arrVals.reduce((acc,cv) => {
+       acc[cv] = arrCallbacks.reduce((el, val) => {
+        el.push(val[cv]);
+        return el;
+       },[])
+       return acc;
+    },{})
+}
 
 // console.log(multiMap(['catfood', 'glue', 'beer'], [function(str) { return str.toUpperCase(); }, function(str) { return str[0].toUpperCase() + str.slice(1).toLowerCase(); }, function(str) { return str + str; }]));
 // should log: { catfood: ['CATFOOD', 'Catfood', 'catfoodcatfood'], glue: ['GLUE', 'Glue', 'glueglue'], beer: ['BEER', 'Beer', 'beerbeer'] }
