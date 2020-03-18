@@ -4,7 +4,11 @@
 
 ```js
 // Your code goes here
-
+function multiplyBy(number){
+  return function double(number2){
+    return number * number2;
+  }
+}
 const double = multiplyBy(2);
 const final = double(15); // final should be 30
 ```
@@ -13,7 +17,11 @@ const final = double(15); // final should be 30
 
 ```js
 // Your code goes here
-
+function fullName(firstName){
+  return function name(lastName){
+    return (firstName + ' ' + lastName);
+  }
+}
 const name = fullName("Will");
 const final = name("Smith"); // final should be "Will Smith"
 ```
@@ -23,6 +31,9 @@ const final = name("Smith"); // final should be "Will Smith"
 ```js
 function isInBetween(a, b) {
   // your code goes here
+  return function isChild(num){
+    return ((num >= a) && (num <=b) ? true : false);
+  }
 }
 
 const isChild = isInBetween(10, 100);
@@ -36,6 +47,9 @@ isChild(103); // false
 ```js
 function letsWishThem(greeting) {
   // your code goes here
+  return function callWithHey(message){
+    return (greeting + message);
+  }
 }
 
 const callWithHey = letsWishThem("Hey");
@@ -49,6 +63,10 @@ callWithHello("How Are You?"); // Hello How Are You?
 ```js
 function addGame(gameName) {
   // your code goes here
+  let score = 1;
+  return function gameToPlay(){
+    console.log(`Your score of ${gameName} is ${score++}`);
+  }
 }
 
 // Output

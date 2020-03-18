@@ -6,18 +6,21 @@
 console.log(animal);
 var animal = "monkey";
 // Output or Error Message
+// Output => undefined;
 ```
 
 ```js
 console.log(animal);
 let animal = "monkey";
 // Output or Error Message
+//Error => animal not defined;
 ```
 
 ```js
 console.log(animal);
 const animal = "monkey";
 // Output or Error Message
+// Error => animal not initialized;
 ```
 
 ```js
@@ -26,6 +29,7 @@ function sayHello(msg) {
 }
 sayHello("Hey Everyone");
 // Output or Error Message
+// Output => alert modal will be shown  with the message Hey Everyone;
 ```
 
 ```js
@@ -34,6 +38,7 @@ function sayHello(msg) {
   alert(msg);
 }
 // Output or Error Message
+// Output => alert modal will be shown with the message.
 ```
 
 ```js
@@ -42,6 +47,7 @@ var sayHello = msg => {
   alert(msg);
 };
 // Output or Error Message
+// Output => alert modal will be shown with the message.
 ```
 
 ```js
@@ -50,3 +56,4 @@ let sayHello = msg => {
   alert(msg);
 };
 ```
+<!-- Error: sayHello not defined. -->

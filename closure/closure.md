@@ -7,10 +7,36 @@
 	   alert(string);
 	 };
 	 ```
+	 ````js
+	 function nonsense(string){
+		 var blab = function(){
+			 alert(string);
+		 }
+		 blab();
+	 }
+	 ````
 
 1. In your function, `nonsense`, change the immediate call to a setTimeout so that the call to `blab` comes after 2 seconds. The `blab` function itself should stay the same as before.
+````js
+function nonsense(string){
+		var blab = function(){
+			alert(string);
+		}
+		setTimeout(blab, 2000);
+	}
+````
 
 1. Now, instead of calling `blab` inside of `nonsense`, return `blab` (without invoking it). Call `nonsense` with some string and store the returned value (the `blab` function) in a variable called `blabLater`. Call `nonsense` again with a different string and store the returned value in a variable called `blabAgainLater`.
+````js
+function nonsense(string){
+	var blab = function(){
+		alert(string);
+	}
+	return blab;
+}
+var blabLater = nonsense('Hello');
+var blabAgainLater = nonsense('GoodBye');
+````
 
 1. Inspect `blabLater` and `blabAgainLater` in your console. Call them (they are functions!) and see what happens!
 
@@ -20,10 +46,12 @@
 	var lastNameTrier = function(firstName){
 	   //does stuff
 
-	    var innerFunction = function() {
-	        //does stuff
+	    var innerFunction = function(lastName) {
+			//does stuff
+			console.log(`${firstName} ${lastName}`)
 	    };
-	    //maybe returns something here
+		//maybe returns something here
+		return innerFunction;
 	};
 	var firstNameFarmer = lastNameTrier('Farmer'); //logs nothing
 	firstNameFarmer('Brown'); //logs 'Farmer Brown'
